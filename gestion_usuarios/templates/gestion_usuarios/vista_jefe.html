@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista Especial del Jefe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/vista_jefe.css' %}">
+</head>
+<body>
+
+    {% if user.is_authenticated %}
+        <div class="container">
+            <div class="welcome-box">
+                <h2>Bienvenido Jefe</h2>
+                <p>Esta es la vista especial para el Jefe.</p>
+                <a href="{% url 'logout' %}">Cerrar Sesión</a>
+            </div>
+        </div>
+    {% else %}
+        <script type="text/javascript">
+            window.location.href = "{% url 'login' %}"; // Redirigir al login si no está autenticado
+        </script>
+    {% endif %}
+
+</body>
+</html>
